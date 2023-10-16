@@ -1,0 +1,46 @@
+* {
+    font-family: "Arial";
+    font-size: 12px;
+}
+
+QPushButton {
+    background-color: #F5B800;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+QPushButton:hover {
+    background-color: #F5B800;
+}
+
+QComboBox, QTextEdit {
+    border: 2px solid #F5B800;
+    border-radius: 4px;
+    padding: 5px;
+    background-color: #f9f9f9;
+}
+
+
+
+QCheckBox {
+    spacing: 5px;
+}
+
+QCheckBox::indicator {
+    width: 13px;
+    height: 13px;
+}
+
+QPushButton:disabled {
+    background-color: #777777;  /* A darker gray */
+    border: 1px solid #555555;
+    color: #aaaaaa;  /* Lighter text color for contrast */
+}

@@ -21,13 +21,13 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QThread
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QFileDialog, QWidget, QPushButton
-from config.devices_name_list import items_list
-from log.logs import *
-from test_scripts.testcase_chromedriver_update import checkChromeDriverUpdate
-from test_scripts.testcase_linux import *
-from ui.controller import retranslateUi
-from test_scripts.testcase_linux import *
-from test_scripts.testcase_windows import *
+
+from devices_name_list import items_list
+from logs import *
+from testcase_chromedriver_update import checkChromeDriverUpdate
+from controller import retranslateUi
+from testcase_linux import *
+from testcase_windows import *
 
 
 class DownloadComplete(QWidget):
@@ -102,6 +102,8 @@ class Ui_TesteEnviromentCheck(object):
         sys.stdout = EmittingStr(textWritten=self.onUpdateText)
         sys.stderr = EmittingStr(textWritten=self.onUpdateText)
 
+
+
     def onUpdateText(self, text):
         cursor = self.textBrowser.textCursor()
         cursor.movePosition(QtGui.QTextCursor.End)
@@ -115,14 +117,8 @@ class Ui_TesteEnviromentCheck(object):
 
         dir_choose = QFileDialog.getExistingDirectory()
 
-        file = dir_choose if dir_choose else "/"
-
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        file_path = os.path.join(script_dir, 'config/saveDir.txt')
-
         try:
-            with open(file_path, 'wt') as saveDir:
-                saveDir.write(file)
+            _, file = read_json_data()
             print(f"You have chosen this location that test package will keep: {file}")
             if dir_choose:
                 self.chooseSaveDir2.setEnabled(True)
